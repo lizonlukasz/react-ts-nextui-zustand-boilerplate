@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { NextUIProvider } from '@nextui-org/react';
-import { Layout } from 'components';
+import { Layout, PageWrapper } from 'components';
 
 export const App = () => (
-  <NextUIProvider>
+  <PageWrapper>
     <Layout>
       <Outlet />
     </Layout>
-  </NextUIProvider>
+  </PageWrapper>
 );

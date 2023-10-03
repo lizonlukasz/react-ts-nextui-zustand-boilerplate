@@ -30,8 +30,8 @@ interface NavItem {
 }
 
 const navigation: NavItem[] = [
-  { to: '/', displayName: 'Home' },
-  { to: 'contact', displayName: 'Contact' },
+  { to: '/app', displayName: 'Home' },
+  { to: '/app/contact', displayName: 'Contact' },
 ];
 
 export const Navbar = () => (
