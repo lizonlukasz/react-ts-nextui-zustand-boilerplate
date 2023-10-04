@@ -5,6 +5,8 @@ import { HomePage, Contact, LandingPage } from 'views';
 import { App } from './App';
 import './index.css';
 import { useAppStore } from './store';
+import { Entrypoint } from './components/Entrypoint';
+import { NextUIProvider } from '@nextui-org/react';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const ThemeWrapper: FC<PropsWithChildren> = ({ children }) => {
+const NextUiWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { theme } = useAppStore();
 
   useEffect(() => {
@@ -38,16 +40,18 @@ const ThemeWrapper: FC<PropsWithChildren> = ({ children }) => {
 
   return (
   // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
+    <NextUIProvider>
       {children}
-    </>
+    </NextUIProvider>
   );
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeWrapper>
-      <RouterProvider router={router} />
-    </ThemeWrapper>
+    <NextUiWrapper>
+      <Entrypoint>
+        <RouterProvider router={router} />
+      </Entrypoint>
+    </NextUiWrapper>
   </React.StrictMode>,
 );
