@@ -5,8 +5,6 @@ export interface AppState {
   setMetamaskError: (v?: string) => void;
   connectingMetamask: boolean;
   setConnectingMetamask: (isConnecting: boolean) => void;
-  connectedMetamask: boolean;
-  setConnectedMetamask: (isConnecting: boolean) => void;
 
   // metamask account
   activeAccount: string | null;

@@ -7,12 +7,10 @@ AppState,
 'theme'
 | 'connectingMetamask'
 | 'activeAccount'
-| 'connectedMetamask'
 > = {
   theme: 'dark',
   connectingMetamask: false,
   activeAccount: null,
-  connectedMetamask: false,
   ...getLsState(),
 };
 
@@ -22,5 +20,4 @@ export const useAppStore = create<AppState>((set) => ({
   setMetamaskError: (value) => set(() => persistLs({ metamaskError: value })),
   setConnectingMetamask: (value) => set(() => persistLs({ connectingMetamask: value })),
   setActiveAccount: (value) => set(() => persistLs({ activeAccount: value })),
-  setConnectedMetamask: (value) => set(() => persistLs({ connectedMetamask: value })),
 }));
