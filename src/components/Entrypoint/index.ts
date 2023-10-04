@@ -1,1 +1,1 @@
-export * from './Entrypoint.tsx';
+export * from './Entrypoint';
