@@ -2,9 +2,16 @@ import React, { FC, PropsWithChildren, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage, Contact, LandingPage } from 'views';
+import { NextUIProvider } from '@nextui-org/react';
 import { App } from './App';
 import './index.css';
 import { useAppStore } from './store';
+
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
 
 const router = createBrowserRouter([
   {
@@ -27,7 +34,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const ThemeWrapper: FC<PropsWithChildren> = ({ children }) => {
+const NextUiWrapper: FC<PropsWithChildren> = ({ children }) => {
   const { theme } = useAppStore();
 
   useEffect(() => {
@@ -38,16 +45,16 @@ const ThemeWrapper: FC<PropsWithChildren> = ({ children }) => {
 
   return (
   // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
+    <NextUIProvider>
       {children}
-    </>
+    </NextUIProvider>
   );
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeWrapper>
+    <NextUiWrapper>
       <RouterProvider router={router} />
-    </ThemeWrapper>
+    </NextUiWrapper>
   </React.StrictMode>,
 );

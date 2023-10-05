@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import {
-  Navbar as NavbarNext, NavbarBrand, NavbarContent, NavbarItem, Link, Button,
+  Navbar as NavbarNext, NavbarBrand, NavbarContent, NavbarItem, Button,
 } from '@nextui-org/react';
 import { NavLink } from 'react-router-dom';
 import { ThemeSwitcher } from '../ThemeSwitcher';
@@ -52,9 +52,7 @@ export const Navbar = () => (
     <NavbarContent justify="end">
       <ThemeSwitcher />
       <NavbarItem>
-        <Button as={Link} color="primary" href="#" variant="flat">
-          Login
-        </Button>
+        Account Placeholder
       </NavbarItem>
     </NavbarContent>
   </NavbarNext>

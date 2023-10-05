@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,
 } from '@nextui-org/react';
@@ -9,7 +8,7 @@ interface ConnectWalletProps {
   setIsOpen: (v: boolean) => void;
 }
 
-export const ConnectWallet: FC<ConnectWalletProps> = ({ isOpen, setIsOpen }) => (
+export const LoginModal: FC<ConnectWalletProps> = ({ isOpen, setIsOpen }) => (
   <Modal
     isOpen={isOpen}
     onOpenChange={setIsOpen}
@@ -18,9 +17,11 @@ export const ConnectWallet: FC<ConnectWalletProps> = ({ isOpen, setIsOpen }) => 
     <ModalContent>
       {(onClose) => (
         <>
-          <ModalHeader className="flex flex-col gap-1">Login Modal</ModalHeader>
+          <ModalHeader className="flex flex-col gap-1">Connect wallet</ModalHeader>
           <ModalBody>
-            <Button as={Link} to="/app">Login</Button>
+
+            <h3>Login logic goes here</h3>
+
           </ModalBody>
           <ModalFooter>
             <Button color="danger" variant="light" onPress={onClose}>
