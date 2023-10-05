@@ -6,7 +6,12 @@ import { NextUIProvider } from '@nextui-org/react';
 import { App } from './App';
 import './index.css';
 import { useAppStore } from './store';
-import { Entrypoint } from './components/Entrypoint';
+
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
 
 const router = createBrowserRouter([
   {
@@ -49,9 +54,7 @@ const NextUiWrapper: FC<PropsWithChildren> = ({ children }) => {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <NextUiWrapper>
-      <Entrypoint>
-        <RouterProvider router={router} />
-      </Entrypoint>
+      <RouterProvider router={router} />
     </NextUiWrapper>
   </React.StrictMode>,
 );

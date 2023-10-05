@@ -3,19 +3,14 @@ import {
   Button, Image, Navbar, NavbarContent, NavbarItem, useDisclosure,
 } from '@nextui-org/react';
 import reactLogo from 'assets/react.svg';
-import { Navigate } from 'react-router-dom';
-import { ThemeSwitcher } from '../../components/ThemeSwitcher';
-import { ConnectWallet } from '../../components/ConnectWallet/ConnectWallet';
-import { useAppStore } from '../../store';
+import { Link } from 'react-router-dom';
+import { LoginModal } from 'components/LoginModal/LoginModal';
+import { ThemeSwitcher } from 'components/ThemeSwitcher';
 
 export const LandingPage: FC = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { activeAccount } = useAppStore();
-  const metamaskInstalled = window.ethereum;
 
-  const buttonText = metamaskInstalled ? 'Connect Wallet' : 'Please install Metamask to use this app';
-
-  if (activeAccount) return <Navigate to="/app" />;
+  const buttonText = 'Login';
 
   return (
     <div
@@ -29,13 +24,13 @@ export const LandingPage: FC = () => {
               color="primary"
               variant="flat"
               onClick={onOpen}
-              disabled={!metamaskInstalled}
+              disabled={false}
             >
               {buttonText}
             </Button>
           </NavbarItem>
           <NavbarItem>
-            <ConnectWallet isOpen={isOpen} setIsOpen={onOpenChange} />
+            <LoginModal isOpen={isOpen} setIsOpen={onOpenChange} />
           </NavbarItem>
         </NavbarContent>
       </Navbar>
@@ -57,9 +52,13 @@ export const LandingPage: FC = () => {
             className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
             size="lg"
             onClick={onOpen}
-            disabled={!metamaskInstalled}
+            disabled={false}
           >
             {buttonText}
+          </Button>
+
+          <Button as={Link} to="/app" variant="light" size="lg">
+            Go to App
           </Button>
 
         </div>

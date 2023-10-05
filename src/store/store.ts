@@ -1,23 +1,17 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { AppState } from 'types';
-import { persistLs, getLsState } from './lsHelpers';
 
-const initialState: Pick<
-AppState,
-'theme'
-| 'connectingMetamask'
-| 'activeAccount'
-> = {
+const initialState: Pick<AppState, 'theme'> = {
   theme: 'dark',
-  connectingMetamask: false,
-  activeAccount: null,
-  ...getLsState(),
 };
 
-export const useAppStore = create<AppState>((set) => ({
-  ...initialState,
-  toggleTheme: () => set((state) => persistLs({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
-  setMetamaskError: (value) => set(() => persistLs({ metamaskError: value })),
-  setConnectingMetamask: (value) => set(() => persistLs({ connectingMetamask: value })),
-  setActiveAccount: (value) => set(() => persistLs({ activeAccount: value })),
-}));
+export const useAppStore = create<AppState>()(
+  persist(
+    (set, get): AppState => ({
+      ...initialState,
+      toggleTheme: () => set({ theme: get().theme === 'dark' ? 'light' : 'dark' }),
+    }),
+    { name: 'zustand-state' },
+  ),
+);
