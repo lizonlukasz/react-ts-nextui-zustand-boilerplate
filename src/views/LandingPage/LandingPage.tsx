@@ -29,13 +29,12 @@ export const LandingPage: FC = () => {
               {buttonText}
             </Button>
           </NavbarItem>
-          <NavbarItem>
-            <LoginModal isOpen={isOpen} setIsOpen={onOpenChange} />
-          </NavbarItem>
         </NavbarContent>
       </Navbar>
 
       <main className="w-screen h-screen flex justify-center items-center p-10">
+
+        <LoginModal isOpen={isOpen} setIsOpen={onOpenChange} />
 
         <div className="w-full lg:w-1/2 mr-10">
           <div className="text-left mb-3">
