@@ -43,7 +43,7 @@ export const Navbar = () => (
       {navigation.map(({ to, displayName }) => (
 
         <NavbarItem key={to}>
-          <Button as={CustomNavLink} to={to} color="primary" href="#" variant="light" className="font-semibold">
+          <Button as={CustomNavLink} end to={to} color="primary" href="#" variant="light" className="font-semibold">
             {displayName}
           </Button>
         </NavbarItem>
