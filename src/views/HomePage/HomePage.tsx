@@ -1,8 +1,7 @@
+import { PageWrapper } from '../../components';
+
 export const HomePage = () => (
-  <div className="max-w-fit flex gap-4 flex-col pb-16">
-    <h1 className="mt-4 font-bold text-4xl">Lorem ipsum
-      dolor sit amet
-    </h1>
+  <PageWrapper title="Lorem ipsum dolor sit amet">
 
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Purus gravida quis blandit turpis. Augue neque gravida in
@@ -108,5 +107,5 @@ export const HomePage = () => (
       rutrum. Eget nulla facilisi etiam dignissim. Erat imperdiet sed euismod nisi. Risus in hendrerit gravida
       rutrum quisque non tellus orci ac.
     </p>
-  </div>
+  </PageWrapper>
 );
