@@ -44,7 +44,6 @@ const NextUiWrapper: FC<PropsWithChildren> = ({ children }) => {
   }, [theme]);
 
   return (
-  // eslint-disable-next-line react/jsx-no-useless-fragment
     <NextUIProvider>
       {children}
     </NextUIProvider>
