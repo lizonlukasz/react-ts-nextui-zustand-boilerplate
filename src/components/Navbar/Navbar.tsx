@@ -4,6 +4,7 @@ import {
 } from '@nextui-org/react';
 import { NavLink } from 'react-router-dom';
 import { ThemeSwitcher } from '../ThemeSwitcher';
+import { AccountDetails } from '../AccountDetail';
 
 const CustomNavLink = forwardRef<any, any>(
   ({ activeClassName, activeStyle, ...props }, ref) => (
@@ -52,7 +53,7 @@ export const Navbar = () => (
     <NavbarContent justify="end">
       <ThemeSwitcher />
       <NavbarItem>
-        Account Placeholder
+        <AccountDetails />
       </NavbarItem>
     </NavbarContent>
   </NavbarNext>

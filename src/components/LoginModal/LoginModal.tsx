@@ -1,35 +1,70 @@
 import { FC } from 'react';
 import {
-  Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,
+  Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Card, CardBody, Image,
 } from '@nextui-org/react';
+import metamaskIcon from 'assets/metamask.png';
+import { useAppStore } from '../../store';
 
 interface ConnectWalletProps {
   isOpen: boolean;
   setIsOpen: (v: boolean) => void;
 }
 
-export const LoginModal: FC<ConnectWalletProps> = ({ isOpen, setIsOpen }) => (
-  <Modal
-    isOpen={isOpen}
-    onOpenChange={setIsOpen}
-    closeButton
-  >
-    <ModalContent>
-      {(onClose) => (
-        <>
-          <ModalHeader className="flex flex-col gap-1">Connect wallet</ModalHeader>
-          <ModalBody>
+export const LoginModal: FC<ConnectWalletProps> = ({ isOpen, setIsOpen }) => {
+  const { setConnectingMetamask, setActiveAccount, setMetamaskError } = useAppStore();
+  const handleWalletConnect = () => {
+    setConnectingMetamask(true);
 
-            <h3>Login logic goes here</h3>
+    if (window.ethereum) {
+      window.ethereum.request({ method: 'eth_requestAccounts' })
+        .then((accounts: string[]) => {
+          setActiveAccount(accounts[0]);
+          setConnectingMetamask(false);
+        })
+        .catch(() => setMetamaskError('Unable to connect to MetaMask'));
+    }
+  };
 
-          </ModalBody>
-          <ModalFooter>
-            <Button color="danger" variant="light" onPress={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </>
-      )}
-    </ModalContent>
-  </Modal>
-);
+  return (
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={setIsOpen}
+      closeButton
+    >
+      <ModalContent>
+        {(onClose) => (
+          <>
+            <ModalHeader className="flex flex-col gap-1">Connect wallet</ModalHeader>
+            <ModalBody>
+
+              <Card
+                className="dark:bg-default-100/50 cursor-pointer"
+                isPressable
+                onPress={handleWalletConnect}
+              >
+                <CardBody className="m-0 p-4">
+                  <div className="flex items-center">
+                    <Image
+                      alt="Metamask logo"
+                      width={50}
+                      shadow="sm"
+                      src={metamaskIcon}
+                    />
+
+                    <h1 className="text-xl ml-4 font-semibold">MetaMask</h1>
+                  </div>
+                </CardBody>
+              </Card>
+
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" variant="light" onPress={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </>
+        )}
+      </ModalContent>
+    </Modal>
+  );
+};

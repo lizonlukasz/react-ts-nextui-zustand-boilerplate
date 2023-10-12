@@ -6,6 +6,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import { App } from './App';
 import './index.css';
 import { useAppStore } from './store';
+import { Entrypoint } from './components/Entrypoint';
 
 declare global {
   interface Window {
@@ -53,7 +54,9 @@ const NextUiWrapper: FC<PropsWithChildren> = ({ children }) => {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <NextUiWrapper>
-      <RouterProvider router={router} />
+      <Entrypoint>
+        <RouterProvider router={router} />
+      </Entrypoint>
     </NextUiWrapper>
   </React.StrictMode>,
 );

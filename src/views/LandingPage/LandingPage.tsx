@@ -1,16 +1,20 @@
 import { FC } from 'react';
+import { Navigate, Link } from 'react-router-dom';
 import {
   Button, Image, Navbar, NavbarContent, NavbarItem, useDisclosure,
 } from '@nextui-org/react';
 import reactLogo from 'assets/react.svg';
-import { Link } from 'react-router-dom';
 import { LoginModal } from 'components/LoginModal/LoginModal';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
+import { useAppStore } from '../../store';
 
 export const LandingPage: FC = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { activeAccount } = useAppStore();
+  const metamaskInstalled = !!window.ethereum;
+  const buttonText = metamaskInstalled ? 'Connect Wallet' : 'Please install Metamask to use this app';
 
-  const buttonText = 'Login';
+  if (activeAccount) return <Navigate to="/app" />;
 
   return (
     <div
