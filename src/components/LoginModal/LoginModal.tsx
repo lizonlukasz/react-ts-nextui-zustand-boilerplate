@@ -11,17 +11,16 @@ interface ConnectWalletProps {
 }
 
 export const LoginModal: FC<ConnectWalletProps> = ({ isOpen, setIsOpen }) => {
-  const { setConnectingMetamask, setActiveAccount, setMetamaskError } = useAppStore();
   const handleWalletConnect = () => {
-    setConnectingMetamask(true);
+    useAppStore.setState({ connectingMetamask: true });
 
     if (window.ethereum) {
       window.ethereum.request({ method: 'eth_requestAccounts' })
         .then((accounts: string[]) => {
-          setActiveAccount(accounts[0]);
-          setConnectingMetamask(false);
+          useAppStore.setState({ activeAccount: accounts[0] });
+          useAppStore.setState({ connectingMetamask: false });
         })
-        .catch(() => setMetamaskError('Unable to connect to MetaMask'));
+        .catch(() => useAppStore.setState({ metamaskError: 'Unable to connect to MetaMask' }));
     }
   };
 

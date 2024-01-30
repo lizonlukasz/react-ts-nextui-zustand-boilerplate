@@ -20,7 +20,7 @@ const mapTasksToTable = (tasksResponse: TaskResponse[]): TaskTableData[] => task
 );
 
 export const useTodoContract = () => {
-  const { activeAccount } = useAppStore();
+  const activeAccount = useAppStore((state) => state.activeAccount);
   const provider = useProvider();
   const [contract, setContract] = useState<Contract | null>(null);
   const [tasks, setTasks] = useState<TaskTableData[]>([]);

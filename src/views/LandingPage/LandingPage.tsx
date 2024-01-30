@@ -10,7 +10,7 @@ import { useAppStore } from '../../store';
 
 export const LandingPage: FC = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { activeAccount } = useAppStore();
+  const activeAccount = useAppStore((state) => state.activeAccount);
   const metamaskInstalled = !!window.ethereum;
   const buttonText = metamaskInstalled ? 'Connect Wallet' : 'Please install Metamask to use this app';
 

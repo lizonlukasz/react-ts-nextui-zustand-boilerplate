@@ -1,12 +1,12 @@
 export interface AppState {
   theme: 'dark' | 'light';
-  toggleTheme: () => void;
+  // toggleTheme: () => void;
   metamaskError?: string;
-  setMetamaskError: (v?: string) => void;
+  // setMetamaskError: (v?: string) => void;
   connectingMetamask: boolean;
-  setConnectingMetamask: (isConnecting: boolean) => void;
+  // setConnectingMetamask: (isConnecting: boolean) => void;
 
   // metamask account
   activeAccount: string | null;
-  setActiveAccount: (account: string | null) => void;
+  // setActiveAccount: (account: string | null) => void;
 }

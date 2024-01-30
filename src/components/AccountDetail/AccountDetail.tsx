@@ -2,7 +2,7 @@ import { User } from '@nextui-org/react';
 import { useAppStore } from '../../store';
 
 export const AccountDetails = () => {
-  const { activeAccount } = useAppStore();
+  const activeAccount = useAppStore((state) => state.activeAccount);
 
   if (!activeAccount) return null;
 

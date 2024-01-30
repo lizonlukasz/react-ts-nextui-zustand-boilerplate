@@ -37,7 +37,7 @@ const router = createBrowserRouter([
 ]);
 
 const NextUiWrapper: FC<PropsWithChildren> = ({ children }) => {
-  const { theme } = useAppStore();
+  const theme = useAppStore((state) => state.theme);
 
   useEffect(() => {
     const { body } = document;
