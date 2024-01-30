@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage, Contact, LandingPage } from 'views';
+import { HomePage, DummyView, LandingPage } from 'views';
 import { NextUIProvider } from '@nextui-org/react';
 import { App } from './App';
 import './index.css';
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'contact',
-        element: <Contact />,
+        element: <DummyView />,
       },
     ],
   },

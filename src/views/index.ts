@@ -1,3 +1,3 @@
 export * from './HomePage';
-export * from './Contact';
+export * from './DummyView';
 export * from './LandingPage';
